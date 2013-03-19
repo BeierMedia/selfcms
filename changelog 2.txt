@@ -1,0 +1,11 @@
+  
+/module/menu/ModuleMenu.php
+
+Zeile 398 entfernt
+ $attributes["id"] = "menu_item_link_" . $all -> menu_id;
+
+id erzeugt fehler bei der xhtml strict prüfung - wird zudem nicht benötigt
+
+
+
+                    test usw
