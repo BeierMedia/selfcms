@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<title>NICO BERLIN</title>	
+
+<!--[if lte IE 8]>
+<script src="./code/html5shiv.js"></script>
+<![endif]-->
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<meta name="author" content="Beiermedia, Interaktionsweise">
+<meta name="description" content="">
+<meta name="generator" content="notepad++">
+<meta name="keywords" lang="de" content="">
+<meta name="robots" content="index">
+
+<!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>-->
+
+<!--<link rel="stylesheet" type="text/css" href="./styles/layout.css"/>-->
+<style type="text/css">
+header {
+	width: 984px;
+	height: 150px;
+	margin: 0 auto;
+	z-index: 100;
+}
+section {
+	position: relative;
+	z-index: 10;
+	width: 984px;
+	margin: 0 auto;
+}
+div#slideNav {
+	position: absolute;
+	top: 130px;
+	left: 0;
+	width: 492px;
+	height: 112px;
+	background-color: rgba(255,255,255,0.8);
+	z-index: 20;
+}
+#slideBox {
+	display: none;
+}
+
+    .slidesjs-navigation, .slidesjs-play, .slidesjs-stop {
+	  display: none;
+	  height: 0;
+    }
+
+    .slidesjs-pagination {
+	  position: absolute;
+	  bottom: 32px;
+	  left: 28px;
+	  margin: 0;
+      list-style: none;
+	  z-index: 21;
+    }
+
+    .slidesjs-pagination li {
+      float: left;
+      margin: 0 8px;
+    }
+
+    .slidesjs-pagination li a {
+      display: block;
+      width: 32px;
+      height: 0;
+      padding-top: 32px;
+      background-image: url(./images/buttons.png);
+      background-position: 0 0;
+      float: left;
+      overflow: hidden;
+    }
+
+    .slidesjs-pagination li a.active,
+    .slidesjs-pagination li a:hover.active {
+      background-position: 0 -32px
+    }
+
+    .slidesjs-pagination li a:hover {
+      background-position: 0 -64px
+    }
+
+</style>
+    
+<script type="text/javascript" src="./code/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="./code/jquery.slides.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function() {
+	// do stuff when DOM is ready
+	if(jQuery('slideBox')){
+		var dauer = 3000;
+		var blende = 1000;
+		jQuery(function(){
+		  jQuery("#slideBox").slidesjs({
+			width: 984,
+			height: 306,
+			navigation: false,
+			effect: {
+				fade: {
+					speed: blende,
+					  // [number] Speed in milliseconds of the fade animation.
+					crossfade: true
+					  // [boolean] Cross-fade the transition.
+				}
+			},
+			play: {
+				active: true,
+				effect: "fade",
+				interval: dauer,
+				// [number] Time spent on each slide in milliseconds.
+				auto: true,
+				// [boolean] Start playing the slideshow on load.
+			}
+		  });
+		});
+		jQuery('.slidesjs-navigation').css("height", "0");
+		var sliderTimer;
+		jQuery('#slideBox').on('mouseenter', function(e) {
+			clearTimeout(sliderTimer);
+			jQuery('.slidesjs-stop').trigger('click');
+		}).on('mouseleave', function(e) {
+			clearTimeout(sliderTimer);
+			sliderTimer = setTimeout(function () {
+			   jQuery('.slidesjs-play').trigger('click');
+			}, 2000);
+		});
+	}
+});
+
+</script>
+</head>
+
+<body>
+<header>
+	<h1>NICO Ihr konstruktiver Partner</h1>
+</header>
+<section>
+	<div id="slideNav">
+		<h2>Qualitätsmanagement</h2>
+		<p>Mit NICO auf Sicherheit setzen - Beratung, Konstruktion und Lieferung</p>
+	</div>
+	<div id="slideBox">
+		<img src="./images/reel_1.jpg" width="984" height="306" />
+		<img src="./images/reel_2.jpg" width="984" height="306" />
+		<img src="./images/reel_3.jpg" width="984" height="306" />
+		<img src="./images/reel_4.jpg" width="984" height="306" />
+		<img src="./images/reel_5.jpg" width="984" height="306" />
+	</div>
+	<!--<p>Unternehmen Lösungen Stellenangebote</p>-->
+</section>
+</body>
+</html>
